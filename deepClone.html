@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let a = {
+        a:1,
+        b:[3,4],
+        c:{
+        a:1,
+        b:[3,4]
+    }
+    }
+    let b = [3,4];
+    let c = 'hello world'
+    function deepClone(obj){
+        let result = null;
+        if(typeof(obj) === 'object'){
+            if(obj instanceof Array){
+                result =[]
+            }else {
+                result = {}
+            }
+            for(let index in obj) {
+                if(typeof(obj[index]) === 'object' && obj[index] !== null) {
+                    obj[index] instanceof Array? result[index] = []:{}
+                    result[index] = deepClone(obj[index]);
+                }else{
+                    result[index] = obj[index];
+                }
+            }
+        }else{
+            result = obj;
+        }
+        return result;
+    }
+    let res = deepClone(a);
+    let res2 = deepClone(b);
+    res.c.b[1] = 0;
+    res2[1] = 0;
+    console.log('object', a,res,b,res2)
+</script>
+</html>
