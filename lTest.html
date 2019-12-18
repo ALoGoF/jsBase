@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+<script>
+    console.log(location);
+
+    function getQueryStringArgs() {
+        var qs = location.search.length ? location.search.substring(1) : '';
+        let args = [];
+        let items = qs.length ? qs.split('&') : [];
+        let item, name, value = null;
+        i = 0;
+        len = items.length;
+        //逐个将每一项添加到 args 对象中
+        for (i = 0; i < len; i++) {
+            if (items[i].indexOf('=') >= 0) {
+                item = items[i].split("=");
+                console.log(item);
+                if (decodeURIComponent(item[0]).length) {
+                    args.push({
+                        key: decodeURIComponent(item[0]),
+                        value: decodeURIComponent(item[1])
+                    });
+                } else {
+                    args.push({
+                        key: null,
+                        value: items[i]
+                    })
+                }
+            } else {
+                args.push({
+                    key: null,
+                    value: items[i]
+                })
+            }
+
+        }
+        return args;
+    }
+
+    let search = getQueryStringArgs();
+    console.log(search);
+</script>
+</html>

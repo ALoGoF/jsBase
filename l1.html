@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+</head>
+
+<body>
+<button onclick="eOpen()">点击打开</button>
+<div>
+    <ul class="parent a b c">
+        <li class="child">111</li>
+        <li class="child">222</li>
+        <li class="child">333</li>
+        <li class="child">444</li>
+    </ul>
+    <div >
+        <ul><li id="outEle">5555</li></ul>
+    </div>
+</div>
+</body>
+<script>
+    // let arr = [1, 2, 3, 4, 6, 8, 7, 1, 3, 1];
+    // let str = 1213435461526547;
+    // let resEv = arr.every((item) => {
+    //     return item % 2 === 0
+    // });
+    // console.log(resEv);
+    // /*false*/
+    // let resSo = arr.some((item => {
+    //     return item % 2 === 0
+    // }));
+    // console.log(resSo);
+    // arr.map((item, index, array) => {
+    //     console.log(item, index, array)
+    // })
+    // let reg = /[1-3]/g
+    // let regRes = reg.exec(arr);
+    // let strRes = reg.exec(str)
+    // console.log(regRes, strRes);
+    //
+    // function factory(num) {
+    //     if (num <= 1) {
+    //         return 1
+    //     } else {
+    //         return num * factory(num - 1);
+    //     }
+    // }
+    //
+    // let facRes = factory(5);
+    // console.log(facRes);
+    // var book = {
+    //     _year: 2019,
+    //     edition: 1,
+    // }
+    // Object.defineProperty(book, 'year', {
+    //     get: function () {
+    //         return this._year;
+    //     },
+    //     set: function (val) {
+    //         console.log(val);
+    //         // if (val > 2019) {
+    //         //     this._year = val;
+    //         //     this.edition += val - 2019
+    //         // }
+    //     }
+    // });
+    //
+    // // book.year = 2020;
+    // book.year = 2019;
+    // book.edition = 3
+    // console.log(book);
+    //
+    // /*工厂模式创建对象*/
+    // function createPerson(name, age) {
+    //     var o = new Object();
+    //     o.name = name;
+    //     o.age = age;
+    //     o.say = function () {
+    //         console.log(`我是${this.name},${this.age}岁了`);
+    //     };
+    //     return o;
+    // }
+    //
+    // let p1 = createPerson('wangwu', 18);
+    // let p12 = createPerson('lisi', 20);
+    // console.log(p1, p12);
+    // p1.say();
+    //
+    // /*构造函数创建对象*/
+    // function Person(name, age, job) {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.job = job;
+    //     this.resume = function () {
+    //         console.log(`我是${this.name},${this.age}岁了,我的工作是${this.job}`)
+    //     }
+    // }
+    //
+    // let p2 = new Person('lisi', 20, "Doctor");
+    // console.log(p2);
+    //
+    // /*原型创建对象*/
+    // function ProtoPerson() {
+    // }
+    //
+    // ProtoPerson.prototype.name = 'wangwu';
+    // ProtoPerson.prototype.age = "25";
+    // ProtoPerson.prototype.job = "Doctor";
+    // ProtoPerson.prototype.resume = function (job) {
+    //     console.log(`我是${this.name},${this.age}岁了,我的工作是${this.job}`)
+    // };
+    // /*简写的原型创建对象 但是会导致constructor 指向Object 而不是ProtoPerson*/
+    // ProtoPerson.prototype = {
+    //     constructor: ProtoPerson,
+    //     name: 'wangwu',
+    //     age: "25",
+    //     job: "Doctor",
+    //     resume: function () {
+    //         console.log(`我是${this.name},${this.age}岁了,我的工作是${this.job}`)
+    //     }
+    // };
+    // let p3 = new ProtoPerson();
+    // console.log(p3);
+    //
+    // /*组合使用构造函数和原型创建对象*/
+    // function MixPerson(name, age, job) {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.job = job;
+    // }
+    //
+    // MixPerson.prototype = {
+    //     constructor: MixPerson,
+    //     resume: function () {
+    //         console.log(`我是${this.name},${this.age}岁了,我的工作是${this.job}`)
+    //     }
+    // };
+    // let p4 = new MixPerson("wangwu", 19, "Doctor");
+    // console.log(p4);
+    //
+    // /*使用寄生构造函数创建对象*/
+    // function ParaPerson(name, age, job) {
+    //     let o = new Object();
+    //     o.name = name;
+    //     o.age = age;
+    //     o.job = job;
+    //     o.sayName = function () {
+    //         console.log(`我是${this.name},${this.age}岁了,我的工作是${this.job}`)
+    //     };
+    //     return o;
+    // }
+    //
+    // let p5 = new ParaPerson("wangwu", 19, "Doctor");
+    // for (key  in p5) {
+    //     console.log(key);
+    // }
+    // console.log(p5.valueOf());
+    //
+    // function SpecialArray() {
+    //     var values = Array();
+    //     console.log(values);
+    //     for (let i = 0; i < arguments.length; i++) {
+    //         values.push(arguments[i]);
+    //     }
+    //     // values.push.apply(values,arguments);
+    //     console.log(values);
+    //     values.toPipedString = function () {
+    //         return this.join('|');
+    //     };
+    //     return values;
+    // }
+    //
+    // var colors = new SpecialArray('red', 'blue', 'green');
+    // console.log(colors.toPipedString());
+    // console.log(colors);
+    // /*继承*/
+    // /*原型链继承*/
+    // function SuperType() {
+    //     this.property = true;
+    // }
+    // SuperType.prototype.getSuperValue = function () {
+    //     return this.property;
+    // };
+    // function SubType() {
+    //     this.subproperty = false;
+    // }
+    // SubType.prototype = new SuperType();
+    // SubType.prototype.getSubValue = function () {
+    //     return this.subproperty;
+    // };
+    // var instance = new SubType();
+    // console.log(instance.getSuperValue());
+    // /*借用构造函数*/
+    // function SuperType(){
+    //     this.colors = ["red", "blue", "green"];
+    // }
+    // function SubType(){
+    //     //继承了 SuperType
+    //     SuperType.call(this);
+    // }
+    // var instance1 = new SubType();
+    // instance1.colors.push("black");
+    // console.log(instance1.colors); //"red,blue,green,black"
+    // var instance2 = new SubType();
+    // console.log(instance2.colors);; //"red,blue,green"
+    // /*组合继承*/
+    // function SuperType(name) {
+    //     this.name = name;
+    //     this.colors = ['red','blue','green'];
+    // }
+    // SuperType.prototype.sayName = function () {
+    //     console.log(this.name);
+    // };
+    // function SubType(name,age) {
+    //     SuperType.call(this,name);
+    //     this.age = age;
+    // }
+    // SubType.prototype =  new SuperType();
+    // SubType.prototype.constructor = SubType;
+    // SubType.prototype.sayAge = function () {
+    //     console.log(this.age);
+    // };
+    // let sub = new  SubType('zhangsan',20);
+    // console.log(sub);
+    /*寄生组合式继承*/
+    // function inheritPrototype(subType, superType) {
+    //     var prototype = JSON.parse(JSON.stringify(superType.prototype));;
+    //     prototype.constructor = subType;
+    //     subType.prototype = prototype;
+    // }
+    //
+    // function SuperType(name) {
+    //     this.name = name;
+    //     this.colors = ['red', 'blue', 'green'];
+    // }
+    //
+    // SuperType.prototype.sayName = function () {
+    //     console.log(this.name);
+    // };
+    //
+    // function SubType(name, age) {
+    //     SuperType.call(this,name);
+    //     this.age = age
+    // }
+    //
+    // inheritPrototype(SubType, SuperType);
+    // SubType.prototype.sayAge = function () {
+    //     console.log(this.age);
+    // };
+    // let sub2 = new SubType('zhangSan', 29);
+    // let sub3 = new SuperType("lisi",20);
+    // console.log(sub2,sub3);
+    /*ES6 class继承*/
+    // class SuperType {
+    //     constructor(name){
+    //         this.name = name;
+    //     }
+    //     SayName() {
+    //         console.log(`我的名字是${this.name}`)
+    //     }
+    // }
+    // class SubType extends SuperType{
+    //     constructor(name,age) {
+    //         super(name);
+    //         this.age = age;
+    //     }
+    //     SayAge() {
+    //         console.log(`我的年龄是${this.age}`)
+    //     }
+    // }
+    // let sub4 =new  SuperType('zhangSan');
+    // let sub5 =new SubType("lisi",20);
+    // console.log(sub4,sub5);
+    // sub5.SayName();
+    /*BOM弹窗*/
+    // alert("Hello World");
+    // confirm("Hello World");
+    // prompt("Hello World",'zhangSan')
+    /*BOM location对象*/
+    function eOpen() {
+        window.open('./lTest.html?javaScript&name=zhangsan&age=18', "_self");
+    }
+    /*DOM*/
+   let parent = document.getElementsByClassName("parent")[0];
+   let firstNode = parent.childNodes[0];
+   let secondNode = parent.childNodes[1];
+   let count = parent.childNodes.length;
+   // let outEle = document.getElementById("outEle");
+   // let returnNode = parent.appendChild(outEle);
+    console.log(parent.childNodes);
+    parent.removeChild(parent.lastChild);
+    /*
+    操作class类名的API
+    * add(val) 将指定的字符串添加到列表中
+    * contains(val)检查列表中是否有给定的值
+    * remove(val) 从列表中删除给定的字符串
+    * toggle如果列表中有该值删除他，没有添加他*/
+    console.log(parent.classList);
+</script>
+</body>
+
+</html>
